@@ -1,0 +1,7 @@
+---
+  - name: Instalacao wordpress
+  host: localhost  
+  become: yes
+  roles:
+  - mysql-server
+  - wordpress
