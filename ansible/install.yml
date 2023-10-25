@@ -1,4 +1,4 @@
----
+--- # Roda o ansible <ansible-playbook install.yml>
   - name: Instalacao wordpress
   host: localhost  
   become: yes
