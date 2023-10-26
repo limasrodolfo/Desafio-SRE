@@ -18,3 +18,31 @@
       - php7.4-json
       
       update_cache: yes
+
+  - name: Configuração do vhost nginx
+    template:
+      src: vhost.nginx.conf.j2
+      dest: /etc/nginx/sites-enabled/default
+
+  - name: Download e descompressão do projeto wordpress
+    ansible.builtin.unrachive:
+      src: https://wordpress.org/latest.zip
+      dest: /var/www/html
+      remote_src: yes
+
+  - name: alterando o arquivo wp-config
+    template:
+      src: wp-config.php.j2
+      dest: /var/www/html/wordpress/wp-config.php
+
+  - name: alterando permissão do diretorio /var/www/html/wordpress
+    ansible.builtin.file:
+      path: /var/www/html/wordpress
+      owner: www-data
+      group: www-data
+      mode: '0755'
+
+  - name: Reinicializando o nginx
+    service:
+      name: nginx
+      state: restarted
