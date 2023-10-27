@@ -25,7 +25,7 @@ Criar um servidor com o site WordPress na AWS de forma automatizada e efetuar o 
 
 - [ ] Provisionar os recursos utilizando o Terraform:
 
-  - [ ] VPC
+  - [*] VPC
 
   - [ ] EC2 
 
