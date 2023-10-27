@@ -58,7 +58,7 @@ resource "aws_subnet" "private_subnet_b" {
   cidr_block        = "10.0.4.0/24"          # Define o bloco CIDR da sub-rede pública com 256 endereços IP disponíveis.
   availability_zone = "us-east-1b"           # Define a zona de disponibilidade da AWS onde esta sub-rede será criada.
   tags = {
-    Name = "Subnet-Privada-B" # Identificar e nomear a sub-rede de maneira descritiva.
+    Name = "Subnet-Privada-B-Desafio" # Identificar e nomear a sub-rede de maneira descritiva.
   }
   depends_on = [
     aws_vpc.this # A criação dessa sub-rede depende da conclusão bem-sucedida da criação da VPC
@@ -68,7 +68,7 @@ resource "aws_subnet" "private_subnet_b" {
 
 //Inicio do Bloco de Cria Internet Gateway
 resource "aws_internet_gateway" "this" {
-  vpc_id = aws_vpc.this
+  vpc_id = aws_vpc.this.id
 
   tags = {
     Name = "Internet-Gateway-Desafio",
@@ -82,7 +82,6 @@ resource "aws_internet_gateway" "this" {
 
 //Inicio do Bloco de Criação IPs dos Nat Gateways
 resource "aws_eip" "eip-a" {
-  vpc      = true
   tags = {
     Name = "IPS-Internet-Gateway-A-Desafio",
     terraformed = "true"
@@ -94,7 +93,6 @@ resource "aws_eip" "eip-a" {
 }
 
 resource "aws_eip" "eip-b" {
-  vpc      = true
   tags = {
     Name = "IPS-Internet-Gateway-B-Desafio",
     terraformed = "true"
@@ -109,7 +107,7 @@ resource "aws_eip" "eip-b" {
 //Inicio do Bloco de Criação dos Nat Gateways
 resource "aws_nat_gateway" "nat_gateway_a" {
   allocation_id = aws_eip.eip-a.id
-  subnet_id     = aws_subnet.public_subnet_a
+  subnet_id     = aws_subnet.public_subnet_a.id
 
   tags = {
     Name = "Nat-Gateway-A-Desafio",
@@ -124,7 +122,7 @@ resource "aws_nat_gateway" "nat_gateway_a" {
 
 resource "aws_nat_gateway" "nat_gateway_b" {
   allocation_id = aws_eip.eip-b.id
-  subnet_id     = aws_subnet.public_subnet_b
+  subnet_id     = aws_subnet.public_subnet_b.id
 
   tags = {
     Name = "Nat-Gateway-B-Desafio",
@@ -202,7 +200,7 @@ resource "aws_route_table" "private_route_table_b" {
     gateway_id = aws_internet_gateway.this.id
   }
   tags = {
-    Name = "Public-Route-Table-B-Desafio",
+    Name = "Private-Route-Table-B-Desafio",
     terraformed = "true"
   }
   depends_on = [
