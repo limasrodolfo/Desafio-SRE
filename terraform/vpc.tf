@@ -1,9 +1,3 @@
-
-// Declaração do provider AWS
-provider "aws" {
-  region = "us-east-1"  # Definição da Região
-}
-
 // Bloco que Crição da VPC
 resource "aws_vpc" "vpc_desafio" {
   cidr_block           = "10.0.0.0/16" # Range IP que a VPC utilizará. 
