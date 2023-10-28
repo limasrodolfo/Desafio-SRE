@@ -1,22 +1,19 @@
-// Configurações globais para o Terraform
 terraform {
-  required_version = ">=1.1.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "5.22.0"
+      version = "5.23.1"
     }
   }
 }
 
-// Declaração do provider AWS
 provider "aws" {
-  profile = "desafio"   # Define o perfil que contém usuário e senha de acesso na aws
-  region  = "us-east-1" # Define a Região
+  profile = "desafio"
+  region  = "us-east-1"
 
   default_tags {
     tags = {
-      managed-by = "terraform" # Tag default para todos os serviços terraform
+      managed-by = "terraform"
     }
 
   }
