@@ -27,7 +27,7 @@ Criar um servidor com o site WordPress na AWS de forma automatizada e efetuar o 
 
   - [X] VPC
 
-  - [ ] EC2 
+  - [X] EC2 
 
   - [ ] RDS
 
@@ -37,7 +37,7 @@ Criar um servidor com o site WordPress na AWS de forma automatizada e efetuar o 
 
     Load Balancer ('*')
 
-- [ ] Provisionar no mínimo 2 servidores Linux na AWS;
+- [X] Provisionar no mínimo 2 servidores Linux na AWS;
 
   Arquitetura com alta disponibilidade multizona; ('*')
 
