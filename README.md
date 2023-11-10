@@ -29,7 +29,7 @@ Criar um servidor com o site WordPress na AWS de forma automatizada e efetuar o 
 
   - [X] EC2 
 
-  - [ ] RDS
+  - [X] RDS
 
     Memcached('*')
 
@@ -41,7 +41,7 @@ Criar um servidor com o site WordPress na AWS de forma automatizada e efetuar o 
 
   Arquitetura com alta disponibilidade multizona; ('*')
 
-- [ ] Instalar e configurar o Wordpress com ansible na EC2;
+- [X] Instalar e configurar o Wordpress com ansible na EC2;
 
 - [ ] Configurar banco de dados em outro servidor (RDS); 
 
